@@ -28,7 +28,7 @@ export default function Login(){
         const data = await res.json();
         if (res.ok) {
             alert('Login successful!');
-            console.log(data); // For dev: token or user info
+            console.log(data); 
         } else {
             alert(`Login failed: ${data.error || "Unknown error"}`);
         }} catch(err){
