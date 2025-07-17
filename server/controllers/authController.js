@@ -25,10 +25,8 @@ const registerUser = async (req, res) =>{
             role: role === "developer" ? "pending_developer" : "user",
             createdAt: new Date().toISOString(),
         });
-        console.log("Hashed password:", hashedPassword);
 
         await newUser.save();
-        console.log("User saved to DB:", newUser);
 
         res.status(201).json({ message: "User registered successfully" });
     }catch(err){
@@ -43,15 +41,10 @@ const loginUser = async (req, res) =>{
         const {email, password} = req.body;
 
         //check password
-
         const user = await User.findOne({email});
         if (!user) {
             return res.status(400).json({ message: "Invalid credentials:1" });
         }
-
-        // DEBUG: Log password values
-        console.log("Entered password:", password);
-        console.log("Stored hashed password:", user.password);
 
         //compare password
         const isMatch = await bcrypt.compare(password, user.password);
