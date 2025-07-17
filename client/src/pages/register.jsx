@@ -1,14 +1,86 @@
 import Button from '@mui/material/Button';
+import { useState } from 'react';
 
-export default function Register(){
-    return (
-        <div>
-            <form>
-                <input type="text" placeholder="Name"/> <br /><br />
-                <input type="text" placeholder="Email"/><br /><br />
-                <input type="text" placeholder="Password" /> <br /><br />
-                <Button variant="outlined" style={{ backgroundColor: "blue", color: "white"}}>Register</Button>
-            </form>
-        </div>
-    )
+export default function Register() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    role: 'user' // default role
+  });
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const res = await fetch('http://localhost:5000/api/auth/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await res.json();
+      console.log(data);
+
+      if (res.ok) {
+        alert('Registered successfully!');
+        // Redirect to login or home if needed
+      } else {
+        alert(data.message || 'Registration failed');
+    }} catch (err) {
+      console.log(err);
+    }
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          placeholder="Name"
+          onChange={handleChange}
+          required
+        />
+        <br /><br />
+        <input
+          type="text"
+          name="email"
+          placeholder="Email"
+          onChange={handleChange}
+          required
+        />
+        <br /><br />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={handleChange}
+          required
+        />
+        <br /><br />
+        <select name="role" value={formData.role} onChange={handleChange}>
+          <option value="user">User</option>
+          <option value="developer">Developer</option>
+        </select>
+        <br /><br />
+        <Button
+          variant="outlined"
+          style={{ backgroundColor: "red", color: "white" }}
+          type="submit"
+        >
+          Register
+        </Button>
+      </form>
+    </div>
+  );
 }
