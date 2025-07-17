@@ -1,7 +1,10 @@
 import Button from '@mui/material/Button';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Register() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -33,7 +36,7 @@ export default function Register() {
 
       if (res.ok) {
         alert('Registered successfully!');
-        // Redirect to login or home if needed
+        navigate('/login');
       } else {
         alert(data.message || 'Registration failed');
     }} catch (err) {

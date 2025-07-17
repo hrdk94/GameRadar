@@ -1,7 +1,11 @@
 import Button from '@mui/material/Button';
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Login(){
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -28,6 +32,7 @@ export default function Login(){
         const data = await res.json();
         if (res.ok) {
             alert('Login successful!');
+            navigate('/games');  
             console.log(data); 
         } else {
             alert(`Login failed: ${data.error || "Unknown error"}`);
