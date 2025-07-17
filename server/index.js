@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/db');
 const cors = require('cors');
+const bcrypt = require("bcryptjs");
 const authRoutes = require("./routes/authRoutes");
 
 //connecting db

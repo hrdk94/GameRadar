@@ -1,4 +1,5 @@
 const User = require("../models/user");
+const bcrypt = require("bcryptjs");
 
 //Register a user
 
@@ -12,16 +13,22 @@ const registerUser = async (req, res) =>{
             return res.status(400).json({ message: "Email already registered" });
         }
 
+        // Hash the password
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
         //create new user
         const newUser = new User({
             name,
             email,
-            password,
+            password: hashedPassword,
             role: role === "developer" ? "pending_developer" : "user",
             createdAt: new Date().toISOString(),
         });
+        console.log("Hashed password:", hashedPassword);
 
         await newUser.save();
+        console.log("User saved to DB:", newUser);
 
         res.status(201).json({ message: "User registered successfully" });
     }catch(err){
@@ -31,7 +38,6 @@ const registerUser = async (req, res) =>{
 };
 
 //Login a user
-
 const loginUser = async (req, res) =>{
     try{
         const {email, password} = req.body;
@@ -39,9 +45,19 @@ const loginUser = async (req, res) =>{
         //check password
 
         const user = await User.findOne({email});
-        if(!user || user.password != password){
-            return res.status(400).json({message: "Invalid credentials"});
-        };
+        if (!user) {
+            return res.status(400).json({ message: "Invalid credentials:1" });
+        }
+
+        // DEBUG: Log password values
+        console.log("Entered password:", password);
+        console.log("Stored hashed password:", user.password);
+
+        //compare password
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ message: "Invalid credentials:2" });
+        }
 
         res.json({
             message: "Login successfully",
