@@ -7,6 +7,7 @@ export default function Home(){
             <h1>WELCOME TO GAMERADAR!</h1>
             <Link to="/register"><Button variant="outlined" style={{ backgroundColor: "red", color: "white", marginRight: "10px" }}>Register</Button></Link>
             <Link to="/login"><Button variant="outlined" style={{ backgroundColor: "blue", color: "white" }}>Login</Button></Link>
+            <Link to="/About"><Button variant="outlined" style={{ backgroundColor: "Greed", color: "white" }}>About Us!</Button></Link>
         </div>
     )
 }

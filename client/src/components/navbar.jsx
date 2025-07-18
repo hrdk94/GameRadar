@@ -24,6 +24,15 @@ export default function Navbar() {
     handleMenuClose();
     navigate('/login');  // ✅ Redirect to login page
   };
+  
+  const handleAboutUs = () =>{
+    handleMenuClose();
+    navigate('/about');
+  }
+
+  const handleAccount =()=>{
+    alert("To be added Later");
+  };
 
   return (
     <div style={{
@@ -52,8 +61,8 @@ export default function Navbar() {
           open={Boolean(anchorEl)}
           onClose={handleMenuClose}
         >
-          <MenuItem> Account Settings </MenuItem>
-          <MenuItem> About US! </MenuItem>
+          <MenuItem onClick={handleAccount}> Account Settings </MenuItem>
+          <MenuItem onClick={handleAboutUs}> About US! </MenuItem>
           <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
       </div>
