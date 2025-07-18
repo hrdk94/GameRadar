@@ -87,7 +87,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
       backgroundColor: '#191308',
       color: '#fff'
     }}>
-      <Typography variant="h5" style={{ color: '#2966acff', fontWeight: 'bold' }}>
+      <Typography variant="h5" style={{ color: '#1976d2', fontWeight: 'bold' }}>
         GameRadar
       </Typography>
 

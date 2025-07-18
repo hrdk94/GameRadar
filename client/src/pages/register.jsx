@@ -46,6 +46,7 @@ export default function Register() {
 
   return (
     <div>
+      <h1 style={{color: "red"}}>Register</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

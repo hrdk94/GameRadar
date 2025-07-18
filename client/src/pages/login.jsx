@@ -42,9 +42,14 @@ export default function Login(){
         }
     };
 
+    const handleRegister =()=>{
+        navigate('/register'); 
+    }
+
 
     return (
         <div>
+            <h1 style={{color:"#1976d2"}}>Login</h1>
             <form onSubmit={handleSubmit}>
                 <input 
                 type="text" 
@@ -65,11 +70,21 @@ export default function Login(){
                 <Button 
                 type='submit' 
                 variant="outlined" 
-                style={{ backgroundColor: "red", 
-                color: "white"}}
+                style={{ backgroundColor: "Blue", 
+                color: "white", marginRight:"10px"}}
                 >
                     Login
                 </Button>
+                <Button 
+                // type='submit' 
+                variant="outlined" 
+                style={{ backgroundColor: "Red", 
+                color: "white"}}
+                onClick={handleRegister}
+                >
+                    Register
+                </Button>
+                
             </form>
         </div>
     )

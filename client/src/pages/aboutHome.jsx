@@ -3,11 +3,11 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Button } from "@mui/material";
 
-export default function AboutUs() {
+export default function AboutHome() {
   const navigate = useNavigate();
 
   const handleGoBack = () => {
-    navigate('/games');
+    navigate('/');
   };
 
   return (
