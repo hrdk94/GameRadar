@@ -7,7 +7,7 @@ import Home from './pages/home';
 import Register from './pages/register';
 import Login from './pages/login';
 import GameList from './pages/gameList';
-import AboutUs from './pages/about';
+import AboutUs from './pages/aboutus';
 
 function App() {
   const [count, setCount] = useState(0)

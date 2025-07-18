@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import { Menu, MenuItem, Button, Typography } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router-dom';
+import SearchIcon from '@mui/icons-material/Search';
+import { alpha, styled } from '@mui/material/styles';
+import InputBase from '@mui/material/InputBase';
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState(null);
@@ -34,6 +37,47 @@ export default function Navbar() {
     alert("To be added Later");
   };
 
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(1),
+    width: 'auto',
+  },
+}));
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  width: '100%',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    [theme.breakpoints.up('sm')]: {
+      width: '12ch',
+      '&:focus': {
+        width: '20ch',
+      },
+    },
+  },
+}));
+
   return (
     <div style={{
       display: 'flex',
@@ -46,6 +90,16 @@ export default function Navbar() {
       <Typography variant="h5" style={{ color: '#2966acff', fontWeight: 'bold' }}>
         GameRadar
       </Typography>
+
+      <Search>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ 'aria-label': 'search' }}
+            />
+          </Search>
 
       <div>
         <Button 
@@ -62,7 +116,7 @@ export default function Navbar() {
           onClose={handleMenuClose}
         >
           <MenuItem onClick={handleAccount}> Account Settings </MenuItem>
-          <MenuItem onClick={handleAboutUs}> About US! </MenuItem>
+          <MenuItem onClick={handleAboutUs}> About Us! </MenuItem>
           <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
       </div>
