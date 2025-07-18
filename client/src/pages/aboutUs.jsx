@@ -1,18 +1,35 @@
 import { useNavigate } from "react-router-dom";
-
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import { Button } from "@mui/material";
 
 export default function AboutUs() {
   const navigate = useNavigate();
 
-    const handleGoBack=()=>{
-        navigate('/games');
-    }
+  const handleGoBack = () => {
+    navigate('/games');
+  };
+
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px', textAlign: 'left' }}>
       <h1>Hi, This is created by @hrdk94</h1>
-      <a href="https://github.com/hrdk94" target="_blank" rel="noopener noreferrer">GitHub</a><br /> <br />
-      <a href="https://www.linkedin.com/in/hrdk94/" target="_blank" rel="noopener noreferrer">LinkedIn</a>  <br /><br />
-      <button onClick={handleGoBack}>Go back</button>
+
+      <div style={{ marginTop: '10px' }}>
+        <GitHubIcon style={{ verticalAlign: 'middle' }} />
+        <a href="https://github.com/hrdk94" target="_blank" rel="noopener noreferrer" style={{ marginLeft: '5px' }}>
+          GitHub
+        </a>
+      </div>
+
+      <div style={{ marginTop: '10px' }}>
+        <LinkedInIcon style={{ verticalAlign: 'middle' }} />
+        <a href="https://www.linkedin.com/in/hrdk94/" target="_blank" rel="noopener noreferrer" style={{ marginLeft: '5px' }}>
+          LinkedIn
+        </a>
+      </div>
+
+      <br />
+      <Button variant="outlined" onClick={handleGoBack}>Go Back</Button>
     </div>
   );
 }

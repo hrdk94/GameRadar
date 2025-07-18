@@ -8,7 +8,7 @@ import InputBase from '@mui/material/InputBase';
 
 export default function Navbar() {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [username, setUsername] = useState("User");
+  const [username, setUsername] = useState("testUser"); //by default
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -25,16 +25,16 @@ export default function Navbar() {
     localStorage.removeItem('user');
     alert("Logged out");
     handleMenuClose();
-    navigate('/login');  // ✅ Redirect to login page
+    navigate('/login');  // Redirect to login page
   };
   
   const handleAboutUs = () =>{
     handleMenuClose();
-    navigate('/about');
+    navigate('/about'); // Redirect to about page
   }
 
   const handleAccount =()=>{
-    alert("To be added Later");
+    alert("To be added Later"); // need to add later 
   };
 
 const Search = styled('div')(({ theme }) => ({
@@ -117,7 +117,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         >
           <MenuItem onClick={handleAccount}> Account Settings </MenuItem>
           <MenuItem onClick={handleAboutUs}> About Us! </MenuItem>
-          <MenuItem onClick={handleLogout}>Logout</MenuItem>
+          <MenuItem onClick={handleLogout}> Logout </MenuItem>
         </Menu>
       </div>
     </div>
