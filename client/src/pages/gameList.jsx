@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Navbar from '../components/navbar';
 
 export default function GameList() {
   const [games, setGames] = useState([]);
@@ -19,6 +20,7 @@ export default function GameList() {
 
   return (
     <div style={{ padding: '20px' }}>
+      <Navbar username="Hardik" />
       <h1>All Games</h1>
       <ul style={{ listStyle: 'none', padding: 0, textAlign: 'left' }}>
         {games.map((game) => (
