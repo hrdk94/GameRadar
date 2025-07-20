@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
+import { Link } from 'react-router-dom';
 
 export default function GameList() {
   const [games, setGames] = useState([]);
@@ -38,7 +39,9 @@ export default function GameList() {
               style={{ width: '100px', marginRight: '20px' }}
             />
             <div>
+              <Link to={`/games/${game._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
               <h3>{game.name}</h3>
+              </Link>
               <p>{game.description?.slice(0, 200)}...</p>
             </div>
           </li>
