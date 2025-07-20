@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const fetch = require('node-fetch');
 const dotenv = require('dotenv');
 const { getIGDBToken } = require('./utils/igdb');
-const Game = require('./models/games'); // adjust if path differs
+const Game = require('./models/games');
 const connectDB = require('./config/db');
 
 dotenv.config();
@@ -19,7 +19,7 @@ async function seedGames() {
         "Authorization": `Bearer ${token}`,
       },
       body: `
-        fields name, summary, cover.image_id, platforms.name, multiplayer_modes.*; 
+        fields name, summary, cover.image_id, platforms.name, multiplayer_modes.*, involved_companies.company.name; 
         where cover != null; 
         limit 250;
       `
@@ -32,7 +32,7 @@ async function seedGames() {
         name: game.name,
         description: game.summary || "No description",
         iconUrl: `https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`,
-        Developer: "Unknown",
+        Developer: game.involved_companies?.[0]?.company?.name || "Unknown",
         platforms: game.platforms?.map(p => p.name).join(", ") || "N/A",
         isMultiplayer: game.multiplayer_modes?.length > 0
       });
