@@ -5,6 +5,7 @@ const cors = require('cors');
 const bcrypt = require("bcryptjs");
 const authRoutes = require("./routes/authRoutes");
 const gameRoutes = require("./routes/gameRoutes");
+const commentRoutes = require("./routes/commentRoutes");
 
 //connecting db
 dotenv.config();
@@ -33,3 +34,6 @@ app.use("/api/auth", authRoutes);
 
 //game data
 app.use("/api/games", gameRoutes);
+
+//comments
+app.use("/api/comments", commentRoutes);
