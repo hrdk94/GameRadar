@@ -56,6 +56,14 @@ export default function Register() {
           required
         />
         <br /><br />
+        <input 
+          type="text" 
+          name="username" 
+          placeholder="Username (eg. gamer123)"
+          onChange={handleChange} 
+          required 
+        />
+        <br /><br />
         <input
           type="text"
           name="email"

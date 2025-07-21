@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 
 const registerUser = async (req, res) =>{
     try{
-        const {name, email, password, role}= req.body;
+        const {name, username, email, password, role}= req.body;
 
         //check if exits already    
         const existingUser = await User.findOne({ email });
@@ -20,6 +20,7 @@ const registerUser = async (req, res) =>{
         //create new user
         const newUser = new User({
             name,
+            username,
             email,
             password: hashedPassword,
             role: role === "developer" ? "pending_developer" : "user",
@@ -40,7 +41,7 @@ const loginUser = async (req, res) =>{
     try{
         const {email, password} = req.body;
 
-        //check password
+        //check email
         const user = await User.findOne({email});
         if (!user) {
             return res.status(400).json({ message: "Invalid credentials:1" });
@@ -57,6 +58,7 @@ const loginUser = async (req, res) =>{
             user: {
                 id: user._id,
                 name: user.name,
+                username: user.username,
                 email: user.email,
                 role: user.role,
             }

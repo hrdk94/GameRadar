@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Navbar from '../components/navbar';
 
 export default function GameDetail() {
   const { id } = useParams(); 
@@ -22,13 +23,17 @@ export default function GameDetail() {
   if (!game) return <p>Loading...</p>;
 
   return (
-    <div style={{ padding: '20px' }}>
+    <>
+    <Navbar />    
+    <div style={{ padding: '20px', textAlign:"left" }}>
       <h1>{game.name}</h1>
       <img src={game.iconUrl} alt={game.name} style={{ width: '200px' }} />
       <p>{game.description}</p>
-      <p><strong>Developer:</strong> {game.Developer || 'N/A'}</p>
-      <p><strong>Platforms:</strong> {game.platforms || 'N/A'}</p>
+      <p><strong>Developer:</strong> {game.Developer || 'Not Available'}</p>
+      <p><strong>Platforms:</strong> {game.platforms || 'Not Available'}</p>
       <p><strong>Multiplayer:</strong> {game.isMultiplayer ? 'Yes' : 'No'}</p>
     </div>
+
+    </>
   );
 }

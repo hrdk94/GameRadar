@@ -31,6 +31,7 @@ export default function Login(){
         })
         const data = await res.json();
         if (res.ok) {
+            localStorage.setItem('user', JSON.stringify(data));  // save username
             alert('Login successful!');
             navigate('/games');  
             console.log(data); 
@@ -45,7 +46,6 @@ export default function Login(){
     const handleRegister =()=>{
         navigate('/register'); 
     }
-
 
     return (
         <div>

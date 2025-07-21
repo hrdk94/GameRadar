@@ -13,8 +13,8 @@ export default function Navbar() {
 
   useEffect(() => {
     const userData = JSON.parse(localStorage.getItem('user'));
-    if (userData?.name) {
-      setUsername(userData.name);
+    if (userData?.user.username) {
+      setUsername(userData.user.username);
     }
   }, []);
 
