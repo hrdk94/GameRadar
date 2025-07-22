@@ -6,9 +6,20 @@ export default function GameList() {
   const [games, setGames] = useState([]);
 
   useEffect(() => {
+    const token = localStorage.getItem('token'); // Get token from localStorage
+
     const fetchGames = async () => {
       try {
-        const res = await fetch('http://localhost:5000/api/games');
+        const res = await fetch('http://localhost:5000/api/games', {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!res.ok) {
+          throw new Error("Failed to fetch games");
+        }
+
         const data = await res.json();
         setGames(data);
       } catch (err) {
@@ -21,7 +32,7 @@ export default function GameList() {
 
   return (
     <div style={{ padding: '20px' }}>
-      <Navbar username="Hardik" />
+      <Navbar />
       <h1>All Games</h1>
       <ul style={{ listStyle: 'none', padding: 0, textAlign: 'left' }}>
         {games.map((game) => (
@@ -40,7 +51,7 @@ export default function GameList() {
             />
             <div>
               <Link to={`/games/${game._id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
-              <h3>{game.name}</h3>
+                <h3>{game.name}</h3>
               </Link>
               <p>{game.description?.slice(0, 200)}...</p>
             </div>
