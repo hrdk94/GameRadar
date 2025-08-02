@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
 import { fetchComments, postComment } from '../api/comment';
+import { useNavigate } from 'react-router-dom';
 
 export default function GameDetail() {
   const { id } = useParams();
@@ -9,10 +10,21 @@ export default function GameDetail() {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
 
+  const navigate = useNavigate();
+
   useEffect(() => {
+    const token = localStorage.getItem("token");
+    if(!token){
+      navigate('/login')
+      return
+    };
     const fetchGameAndComments = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/games/${id}`);
+        const res = await fetch(`http://localhost:5000/api/games/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
         const gameData = await res.json();
         setGame(gameData);
 
