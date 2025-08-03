@@ -84,7 +84,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
       justifyContent: 'space-between',
       alignItems: 'center',
       padding: '15px 30px',
-      backgroundColor: '#191308',
+      backgroundColor: '#0d1220ff',
       color: '#fff'
     }}>
       <Typography variant="h5" style={{ color: '#1976d2', fontWeight: 'bold' }}>

@@ -11,6 +11,7 @@ import AboutUs from './pages/aboutus';
 import AboutHome from './pages/aboutHome';
 import GameDetail from './pages/gameDetail';
 
+
 function App() {
   const [count, setCount] = useState(0)
 

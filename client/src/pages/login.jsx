@@ -2,6 +2,7 @@ import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import ParticlesBackground from '../components/ParticleBackground';
 
 
 export default function Login(){
@@ -50,7 +51,9 @@ export default function Login(){
 
     return (
         <div>
-            <h1 style={{color:"#1976d2"}}>Login</h1>
+            <ParticlesBackground />
+            <div style={{ position: "relative", zIndex: 10 }}>
+                <h1 style={{color:"#1976d2"}}>Login</h1>
             <form onSubmit={handleSubmit}>
                 <input 
                 type="text" 
@@ -87,6 +90,7 @@ export default function Login(){
                 </Button>
                 
             </form>
+            </div>
         </div>
     )
 }

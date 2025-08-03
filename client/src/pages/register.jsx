@@ -1,6 +1,7 @@
 import Button from '@mui/material/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import ParticlesBackground from '../components/ParticleBackground';
 
 
 export default function Register() {
@@ -46,7 +47,9 @@ export default function Register() {
 
   return (
     <div>
-      <h1 style={{color: "red"}}>Register</h1>
+      <ParticlesBackground />
+      <div style={{ position: "relative", zIndex: 10 }}>
+        <h1 style={{color: "red"}}>Register</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -93,6 +96,7 @@ export default function Register() {
           Register
         </Button>
       </form>
+      </div>      
     </div>
   );
 }
