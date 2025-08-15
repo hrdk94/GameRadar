@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Button } from "@mui/material";
+import ParticlesBackground from "../components/ParticleBackground";
 
 export default function AboutUs() {
   const navigate = useNavigate();
@@ -11,6 +12,8 @@ export default function AboutUs() {
   };
 
   return (
+  <div>
+    <ParticlesBackground />
     <div style={{ padding: '20px', textAlign: 'left' }}>
       <h1>Hi, This is created by @hrdk94</h1>
 
@@ -27,7 +30,7 @@ export default function AboutUs() {
           LinkedIn
         </a>
       </div>
-
+  </div>
       <br />
       <Button variant="outlined" onClick={handleGoBack}>Go Back</Button>
     </div>

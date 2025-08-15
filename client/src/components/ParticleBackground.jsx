@@ -15,7 +15,7 @@ export default function ParticlesBackground() {
         pointerEvents: "none"
       }}
       options={{
-        fpsLimit: 60,
+        fpsLimit: 180,
         interactivity: {
           events: {
             onHover: { enable: true, mode: "repulse" },

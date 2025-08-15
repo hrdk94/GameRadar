@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
 import { Link } from 'react-router-dom';
+import ParticlesBackground from '../components/ParticleBackground';
 
 export default function GameList() {
   const [games, setGames] = useState([]);
@@ -31,10 +32,12 @@ export default function GameList() {
   }, []);
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div>
+      <ParticlesBackground />
+      <div style={{ padding: '20px',}}>
       <Navbar />
       <h1>All Games</h1>
-      <ul style={{ listStyle: 'none', padding: 0, textAlign: 'left' }}>
+      <ul style={{ listStyle: 'none', padding: 0, textAlign: 'left', zIndex:10 }}>
         {games.map((game) => (
           <li
             key={game._id}
@@ -59,5 +62,7 @@ export default function GameList() {
         ))}
       </ul>
     </div>
+    </div>
+    
   );
 }

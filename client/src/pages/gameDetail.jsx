@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import Navbar from '../components/navbar';
 import { fetchComments, postComment } from '../api/comment';
 import { useNavigate } from 'react-router-dom';
+import ParticlesBackground from '../components/ParticleBackground';
 
 export default function GameDetail() {
   const { id } = useParams();
@@ -54,8 +55,9 @@ export default function GameDetail() {
 
   return (
     <>
+    <ParticlesBackground />
       <Navbar />
-      <div style={{ padding: '20px', textAlign: "left" }}>
+      <div style={{ padding: '20px', textAlign: "left" , zIndex: 10}}>
         <h1>{game.name}</h1>
         <img src={game.iconUrl} alt={game.name} style={{ width: '200px' }} />
         <p>{game.description}</p>
