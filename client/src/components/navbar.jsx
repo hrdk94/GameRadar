@@ -91,7 +91,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
         GameRadar
       </Typography>
 
-      <Search>
+      {/* <Search>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -99,7 +99,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
               placeholder="Search…"
               inputProps={{ 'aria-label': 'search' }}
             />
-          </Search>
+          </Search> */}
 
       <div>
         <Button 

@@ -26,7 +26,7 @@ export default function Home() {
             Login
           </Button>
         </Link>
-        <Link to="/about">
+        <Link to="/abouth">
           <Button
             variant="outlined"
             style={{ backgroundColor: "#32936F", color: "white", margin: "10px" }}

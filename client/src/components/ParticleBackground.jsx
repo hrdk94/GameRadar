@@ -12,7 +12,13 @@ export default function ParticlesBackground() {
       id="tsparticles"
       init={particlesInit}
       style={{
-        pointerEvents: "none"
+        position: "fixed",       // fixed so it stays even when scrolling
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        // zIndex: -9999,           // way behind everything else
+        pointerEvents: "none",   // let clicks pass through
       }}
       options={{
         fpsLimit: 180,
@@ -22,8 +28,7 @@ export default function ParticlesBackground() {
             resize: true,
           },
           modes: {
-            repulse: {distance: 100},
-            // grab: {distance: 200, links:{opacity:0.8} },
+            repulse: { distance: 100 },
             attract: { distance: 100, duration: 0.4, factor: 5 },
           },
         },
@@ -41,7 +46,7 @@ export default function ParticlesBackground() {
             enable: true,
             speed: 1.75,
             outModes: { default: "bounce" },
-            angle: { offset: 90, value: 360 }, // attempt circular movement
+            angle: { offset: 90, value: 360 },
           },
           opacity: { value: 0.75 },
           shape: { type: "circle" },
